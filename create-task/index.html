@@ -4,25 +4,18 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
     <title>Vite App</title>
   </head>
   <body>
     <div id="con">
-      <form id="userinputs">
-        <input type="Name" placeholder="keyword">
-        <input type="Name" placeholder="max calories">
-        <input type="text" placeholder="fat">
-        <input type="text" placeholder="carbohydrates">
-        <input type="text" placeholder="carb minimum">
-        <input type="text" placeholder="sugar">
-        <input type="text" placeholder="protein">
-        <input type="text" placeholder="fiber">
-        <input id="maxcooktime" type="text" placeholder="max cook/prep time">
-        <button>SEARCH</button>
-      </form>
-      <div id="recipes">
-
+      <h1 id="title">Have you seen this word?</h1>
+      <p id="wordDisplay"></p>
+      <div id="buttons">
+        <button id="yesButton">yes</button>
+        <button id="noButton">no</button>
       </div>
+      <p id="scoreboard">score: 0</p>
     </div>
     <script type="module" src="/main.js"></script>
   </body>

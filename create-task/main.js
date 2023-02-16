@@ -1,24 +1,73 @@
-let maxcooktime = null
+import { words } from "./words"
+let history = []
+let repeat = null
+let word = ""
+let score = 0
 const DOMSelectors = {
   container: document.getElementById("con"),
-  userinputform: document.getElementById("userinputs"),
-  recipes: document.getElementById("recipes"),
-  maxcooktime: document.getElementById("maxcooktime")
+  yesbtn: document.getElementById("yesButton"),
+  nobtn: document.getElementById("noButton"),
+  title: document.getElementById("title"),
+  wordDisplay: document.getElementById('wordDisplay'),
+  scoreboard: document.getElementById("scoreboard"),
+  buttons: document.getElementById("buttons")
 }
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'ad555dce74mshb1522482a48114dp1f8cddjsnff68c51d250d',
-		'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
+function startRound(){
+	let randomIndex = Math.floor(Math.random() * words.length);
+    word = words[randomIndex];
+	DOMSelectors.wordDisplay.innerHTML = `${word}`
+	if (history.includes(word)) {
+		repeat = true
+		return repeat
 	}
-};
-DOMSelectors.userinputform.addEventListener(`submit`,function(e){
-	e.preventDefault();
-	maxcooktime = DOMSelectors.maxcooktime.value
-	let url = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=listAPI`
-	console.log(maxcooktime)
-	fetch(url, options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
+	else {
+		repeat = false 
+		history.push(word)
+		return repeat
+	}
+}
+// function startRound(){
+// 	getRandomWord();
+// 	checkHistory();
+// }
+// function getRandomWord() {
+//     let randomIndex = Math.floor(Math.random() * words.length);
+//     word = words[randomIndex];
+// 	DOMSelectors.wordDisplay.innerHTML = `${word}`
+// 	return word
+// }
+// function checkHistory(){
+// 	if (history.includes(word)) {
+// 		repeat = true
+// 		return repeat
+// 	}
+// 	else {
+// 		repeat = false 
+// 		history.push(word)
+// 		return repeat
+// 	}
+// }
+startRound();
+DOMSelectors.yesbtn.addEventListener("click", function(){
+	if (repeat === true){
+		score ++;
+		DOMSelectors.scoreboard.innerHTML = `score: ${score}`
+		startRound();
+	}
+	else{
+		DOMSelectors.wordDisplay.innerHTML = "you lose"
+		DOMSelectors.buttons.remove();
+	}
+})
+
+DOMSelectors.nobtn.addEventListener("click", function(){
+	if (repeat === false){
+		score ++;
+		DOMSelectors.scoreboard.innerHTML = `score: ${score}`
+		startRound();
+	}
+	else{
+		DOMSelectors.wordDisplay.innerHTML =  "you lose"
+		DOMSelectors.buttons.remove();
+	}
 })
