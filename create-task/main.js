@@ -26,24 +26,6 @@ function startRound() {
     return repeat;
   }
 }
-<<<<<<< Updated upstream
-=======
-function startRound(){
-	let randomIndex = Math.floor(Math.random() * words.length);
-    word = words[randomIndex];
-	DOMSelectors.wordDisplay.innerHTML = `${word}`
-	if (history.includes(word)) {
-		repeat = true
-		return repeat
-	}
-	else {
-		repeat = false 
-		history.push(word)
-		return repeat
-	}
-}
-
->>>>>>> Stashed changes
 startRound();
 DOMSelectors.yesbtn.addEventListener("click", function () {
   if (repeat === true) {
@@ -57,7 +39,6 @@ DOMSelectors.yesbtn.addEventListener("click", function () {
   }
 });
 
-<<<<<<< Updated upstream
 DOMSelectors.nobtn.addEventListener("click", function () {
   if (repeat === false) {
     score++;
@@ -76,38 +57,3 @@ function lose() {
   });
   DOMSelectors.container.insertAdjacentHTML("afterend", `<h2>history:</h2>`);
 }
-=======
-DOMSelectors.nobtn.addEventListener("click", function(){
-	if (repeat === false){
-		score ++;
-		DOMSelectors.scoreboard.innerHTML = `score: ${score}`
-		startRound();
-	}
-	else{
-		DOMSelectors.wordDisplay.innerHTML =  "you lose"
-		DOMSelectors.buttons.remove();
-	}
-})
-
-// function startRound(){
-// 	getRandomWord();
-// 	checkHistory();
-// }
-// function getRandomWord() {
-//     let randomIndex = Math.floor(Math.random() * words.length);
-//     word = words[randomIndex];
-// 	DOMSelectors.wordDisplay.innerHTML = `${word}`
-// 	return word
-// }
-// function checkHistory(){
-// 	if (history.includes(word)) {
-// 		repeat = true
-// 		return repeat
-// 	}
-// 	else {
-// 		repeat = false 
-// 		history.push(word)
-// 		return repeat
-// 	}
-// }
->>>>>>> Stashed changes
