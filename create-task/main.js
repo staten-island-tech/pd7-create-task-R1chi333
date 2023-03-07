@@ -57,9 +57,9 @@ function lose() {
     DOMSelectors.container.insertAdjacentHTML("afterend", `<p>${element}</p>`);
   });
   DOMSelectors.container.insertAdjacentHTML("afterend", `<h2>history:</h2>`);
-  if(history.length >= 10){
+  if(score >= 10){
     DOMSelectors.scoreboard.insertAdjacentHTML("afterend", `<p>oh wow!</p>`)
-  } else if(history.length >= 30){
+  } else if(score >= 30){
     DOMSelectors.scoreboard.insertAdjacentHTML("afterend", `<p>AMAZING!</p>`)    
   } else {
     DOMSelectors.scoreboard.insertAdjacentHTML("afterend", `<p>better luck next time</p>`) 
