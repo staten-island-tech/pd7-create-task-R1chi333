@@ -37,7 +37,6 @@ DOMSelectors.yesbtn.addEventListener("click", function () {
   } else {
     DOMSelectors.wordDisplay.innerHTML = "you lose";
     lose();
-    DOMSelectors.buttons.remove();
   }
 });
 
@@ -49,13 +48,20 @@ DOMSelectors.nobtn.addEventListener("click", function () {
   } else {
     DOMSelectors.wordDisplay.innerHTML = "you lose";
     lose();
-    DOMSelectors.buttons.remove();
   }
 });
 
 function lose() {
+  DOMSelectors.buttons.remove();
   history.forEach((element) => {
     DOMSelectors.container.insertAdjacentHTML("afterend", `<p>${element}</p>`);
   });
   DOMSelectors.container.insertAdjacentHTML("afterend", `<h2>history:</h2>`);
+  if(history.length >= 10){
+    DOMSelectors.scoreboard.insertAdjacentHTML("afterend", `<p>oh wow!</p>`)
+  } else if(history.length >= 30){
+    DOMSelectors.scoreboard.insertAdjacentHTML("afterend", `<p>AMAZING!</p>`)    
+  } else {
+    DOMSelectors.scoreboard.insertAdjacentHTML("afterend", `<p>better luck next time</p>`) 
+  }
 }
