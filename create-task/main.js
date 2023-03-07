@@ -36,7 +36,7 @@ DOMSelectors.yesbtn.addEventListener("click", function () {
     startRound();
   } else {
     DOMSelectors.wordDisplay.innerHTML = "you lose";
-    lose();
+    lose("yes");
   }
 });
 
@@ -47,21 +47,21 @@ DOMSelectors.nobtn.addEventListener("click", function () {
     startRound();
   } else {
     DOMSelectors.wordDisplay.innerHTML = "you lose";
-    lose();
+    lose("no");
   }
 });
 
-function lose() {
+function lose(strin) {
   DOMSelectors.buttons.remove();
   history.forEach((element) => {
     DOMSelectors.container.insertAdjacentHTML("afterend", `<p>${element}</p>`);
   });
   DOMSelectors.container.insertAdjacentHTML("afterend", `<h2>history:</h2>`);
   if(score >= 10){
-    DOMSelectors.scoreboard.insertAdjacentHTML("afterend", `<p>oh wow!</p>`)
+    DOMSelectors.scoreboard.insertAdjacentHTML("afterend", `<p>oh wow! NICE<br>It was not ${strin} tho</p>`)
   } else if(score >= 30){
-    DOMSelectors.scoreboard.insertAdjacentHTML("afterend", `<p>AMAZING!</p>`)    
+    DOMSelectors.scoreboard.insertAdjacentHTML("afterend", `<p>AMAZING!<br>It was not ${strin}tho</p>`)    
   } else {
-    DOMSelectors.scoreboard.insertAdjacentHTML("afterend", `<p>better luck next time</p>`) 
+    DOMSelectors.scoreboard.insertAdjacentHTML("afterend", `<p>better luck next time<br>It was not ${strin}</p>`) 
   }
 }
