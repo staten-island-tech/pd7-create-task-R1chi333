@@ -1,8 +1,8 @@
 import { words } from "./words";
-let history = [];
 let repeat = null;
 let word = "";
 let score = 0;
+
 const DOMSelectors = {
   container: document.getElementById("con"),
   yesbtn: document.getElementById("yesButton"),
@@ -12,6 +12,8 @@ const DOMSelectors = {
   scoreboard: document.getElementById("scoreboard"),
   buttons: document.getElementById("buttons"),
 };
+
+let history = [];
 function startRound() {
   let randomIndex = Math.floor(Math.random() * words.length);
   word = words[randomIndex];
